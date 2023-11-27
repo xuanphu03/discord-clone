@@ -36,7 +36,7 @@ export default function Org() {
 
   return (
     <div className="w-full flex">
-      <div className="bg-secondary/30 w-64 flex-shrink-0">
+      <div className="relative bg-secondary/30 w-64 flex-shrink-0">
         <header className="shadow-lg p-3 flex items-center justify-between">
           <div className="flex gap-2 items-center text-lg">
             <Home />
@@ -46,7 +46,7 @@ export default function Org() {
           </div>
           <ChevronDown />
         </header>
-        <div className="h-3/4 overflow-y-auto">
+        <div className="h-[calc(100%-6.5rem)] overflow-y-auto">
           <div className="text-primary/60 px-2">
             {HEADER.map((header) => (
               <div className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-foreground/10 rounded-sm" key={header.id}>
@@ -85,12 +85,23 @@ export default function Org() {
             ))}
           </div>
         </div>
-        <div className="p-4 bg-background/60 flex justify-between">
-          <div>XunaFu Kuma.xp03</div>
-          <div className="flex gap-1">
-            <Mic />
-            <Headphones />
-            <Settings />
+        <div className="absolute bottom-0 w-full px-4 py-2 bg-background/60 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <img
+              className="rounded-full object-cover"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU"
+              alt="avatar"
+              width={35}
+            />
+            <div className="">
+              <p className="text-sm">XunaFu</p>
+              <p className="text-xs">@kuma.xp03</p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Mic className="w-5" />
+            <Headphones className="w-5" />
+            <Settings className="w-5" />
           </div>
         </div>
       </div>

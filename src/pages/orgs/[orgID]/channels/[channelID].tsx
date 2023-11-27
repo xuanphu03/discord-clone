@@ -20,7 +20,7 @@ export default function Channels() {
         </div>
       </header>
       <div className="flex h-[calc(100vh-3.25rem)]">
-        <div className="w-full">
+        <div className="w-full pb-5 flex flex-col justify-between">
           <ChatList />
         </div>
         <div className="w-60 p-4 bg-primary-foreground/30 flex-shrink-0">
