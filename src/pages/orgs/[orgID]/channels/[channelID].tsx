@@ -23,7 +23,7 @@ export default function Channels() {
         <div className="w-full pb-5 flex flex-col justify-between">
           <ChatList />
         </div>
-        <div className="w-60 p-4 bg-primary-foreground/30 flex-shrink-0">
+        <div className="w-60 p-4 bg-third/70 flex-shrink-0">
           <MemberList />
         </div>
       </div>

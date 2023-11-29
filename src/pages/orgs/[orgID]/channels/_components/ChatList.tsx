@@ -116,7 +116,7 @@ export default function ChatList() {
     <>
       <div className="overflow-y-auto" ref={chatListRef}>
         {message.map((message) => (
-          <div className="flex gap-4 my-3 px-5 py-1 hover:bg-primary-foreground/10" key={message.id}>
+          <div className="flex gap-4 my-3 px-5 py-1 hover:bg-hover" key={message.id}>
             <div>
               <img className="rounded-full" src={message.sender.avatar} alt={message.sender.name} width={40} />
             </div>
@@ -127,36 +127,36 @@ export default function ChatList() {
           </div>
         ))}
       </div>
-      <div className="flex items-center mx-4 px-4 bg-primary/20 rounded-md">
+      <div className="flex items-center mx-4 px-4 bg-input rounded-md">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
-              className="bg-primary/60 rounded-full w-5 h-5 p-0 border-none hover:bg-primary/90"
+              className="bg-foreground/60 rounded-full flex-shrink-0 w-5 h-5 p-0 border-none hover:bg-foreground/90"
               variant="outline"
             >
-              <Plus className="w-4 text-primary-foreground" />
+              <Plus className="w-4 text-primary" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-48 mb-3 ml-32">
             <DropdownMenuItem className="flex flex-col items-start gap-1">
               <div className="flex">
                 <Upload className="mr-2 h-4 w-4" />
-                <span>Upload a File</span>
+                <span className="text-primary-foreground">Upload a File</span>
               </div>
               <div className="text-xs flex gap-2">
-                <p>Tip: Double click the</p>
-                <Plus className="bg-primary/60 rounded-full w-4 h-4 text-primary-foreground" />
+                <p className="text-primary-foreground">Tip: Double click the</p>
+                <Plus className="bg-primary-foreground rounded-full w-4 h-4 text-primary" />
               </div>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Frame className="mr-2 h-4 w-4" />
-              <span>Create Thread</span>
+              <span className="text-primary-foreground">Create Thread</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <div className="mr-2 h-4 w-4 bg-primary/60 flex items-center">
-                <Slash className="h-3 text-primary-foreground" />
+              <div className="mr-2 h-4 w-4 bg-foreground flex items-center rounded-sm">
+                <Slash className="h-3 text-primary" />
               </div>
-              <span>API</span>
+              <span className="text-primary-foreground">Use Apps</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

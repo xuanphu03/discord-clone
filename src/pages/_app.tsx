@@ -8,6 +8,7 @@ export default function App() {
   const location = useLocation()
 
   useEffect(() => {
+    document.documentElement.classList.add('dark');
     if (location.pathname === '/') {
       navigate(`/orgs/${ORGS[0].id}`);
     }

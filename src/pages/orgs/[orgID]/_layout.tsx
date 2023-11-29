@@ -36,7 +36,7 @@ export default function Org() {
 
   return (
     <div className="w-full flex">
-      <div className="relative bg-secondary/30 w-64 flex-shrink-0">
+      <div className="relative bg-primary w-64 flex-shrink-0">
         <header className="shadow-lg p-3 flex items-center justify-between">
           <div className="flex gap-2 items-center text-lg">
             <Home />
@@ -46,17 +46,17 @@ export default function Org() {
           </div>
           <ChevronDown />
         </header>
-        <div className="h-[calc(100%-6.5rem)] overflow-y-auto">
-          <div className="text-primary/60 px-2">
+        <div className="h-[calc(100%-6.5rem)] overflow-y-auto text-primary-foreground">
+          <div className="px-2">
             {HEADER.map((header) => (
-              <div className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-foreground/10 rounded-sm" key={header.id}>
+              <div className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-hover rounded-sm" key={header.id}>
                 <header.icon />
                 <p>{header.name}</p>
               </div>
             ))}
           </div>
-          <div className="px-2 mt-4 text-primary/60">
-            <hr className="h-2 border-primary/60" />
+          <div className="px-2 mt-4">
+            <hr className="h-2 border-border" />
             {CATEGORIES.map((category) => (
               <div key={category.id}>
                 <div className="flex justify-between">
@@ -71,8 +71,8 @@ export default function Org() {
                     <div
                       key={channel.id}
                       className={cn(
-                        { 'bg-foreground/10 text-primary/90': channel.id === channelID },
-                        'flex px-4 py-2 cursor-pointer hover:bg-foreground/10 rounded-sm'
+                        { 'bg-active text-foreground': channel.id === channelID },
+                        'flex px-4 py-2 cursor-pointer hover:bg-hover rounded-sm'
                       )}
                       onClick={() => navigateToChannel(channel.id)}
                     >
@@ -85,7 +85,7 @@ export default function Org() {
             ))}
           </div>
         </div>
-        <div className="absolute bottom-0 w-full px-4 py-2 bg-background/60 flex justify-between items-center">
+        <div className="absolute bottom-0 w-full px-4 py-2 bg-third flex justify-between items-center">
           <div className="flex items-center gap-2">
             <img
               className="rounded-full object-cover"
@@ -105,7 +105,7 @@ export default function Org() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-secondary">
+      <div className="w-full">
         <Outlet />
       </div>
     </div>
