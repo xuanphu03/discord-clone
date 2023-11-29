@@ -26,18 +26,7 @@ module.exports = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
+        third: 'hsl(var(--third))',
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
@@ -46,6 +35,8 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        hover: 'hsl(var(--hover))',
+        active: 'hsl(var(--active))',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -68,5 +59,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar')],
+  // plugins: [require('tailwindcss-animate')],
 };
