@@ -1,4 +1,4 @@
-import { Frame, Volume2 } from "lucide-react";
+import { Hash, Volume2 } from "lucide-react";
 
 export const CATEGORIES = [
   {
@@ -7,12 +7,12 @@ export const CATEGORIES = [
     channels: [
       {
         id: '1',
-        icon: Frame,
+        icon: Hash,
         name: 'general',
       },
       {
         id: '2',
-        icon: Frame,
+        icon: Hash,
         name: 'Music',
       },
     ],
@@ -39,12 +39,12 @@ export const CATEGORIES = [
     channels: [
       {
         id: '5',
-        icon: Frame,
+        icon: Hash,
         name: 'Job',
       },
       {
         id: '6',
-        icon: Frame,
+        icon: Hash,
         name: 'Learn',
       },
     ],
@@ -55,12 +55,12 @@ export const CATEGORIES = [
     channels: [
       {
         id: '7',
-        icon: Frame,
+        icon: Hash,
         name: 'F0',
       },
       {
         id: '8',
-        icon: Frame,
+        icon: Hash,
         name: 'F1',
       },
     ],

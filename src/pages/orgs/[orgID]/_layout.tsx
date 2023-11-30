@@ -38,9 +38,9 @@ export default function Org() {
     <div className="w-full flex">
       <div className="relative bg-primary w-64 flex-shrink-0">
         <header className="shadow-lg p-3 flex items-center justify-between">
-          <div className="flex gap-2 items-center text-lg">
-            <Home />
-            <div className="w-40">
+          <div className="flex items-center text-lg">
+            <div className="flex gap-2 w-40">
+              <Home />
               <h1 className="font-bold whitespace-nowrap overflow-hidden text-ellipsis">{org?.name}</h1>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function Org() {
               alt="avatar"
               width={35}
             />
-            <div className="">
+            <div>
               <p className="text-sm">XunaFu</p>
               <p className="text-xs">@kuma.xp03</p>
             </div>

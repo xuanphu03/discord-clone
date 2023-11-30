@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { useParams } from '@/router';
-import { Frame, Gift, Plus, Slash, Sticker, Upload } from 'lucide-react';
+import { Gift, Hash, Plus, Slash, Smile, Sticker, Upload } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
@@ -76,12 +76,12 @@ const MESSAGES = [
     },
     message: 'Ngủ luôn cũng được :))',
   },
-]
+];
 
 export default function ChatList() {
-  const chatListRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [message, setMessage] = useState(MESSAGES)
+  const chatListRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [message, setMessage] = useState(MESSAGES);
 
   const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && inputRef.current?.value.trim() !== '') {
@@ -98,15 +98,15 @@ export default function ChatList() {
             },
             message: inputRef.current!.value,
           },
-        ])
-      })
+        ]);
+      });
       inputRef.current!.value = '';
       chatListRef.current?.scrollTo({
         top: chatListRef.current.scrollHeight,
         behavior: 'smooth',
       });
     }
-  }
+  };
 
   const { channelID } = useParams('/orgs/:orgID/channels/:channelID');
   const channelIndex = Number(channelID) - 1;
@@ -149,7 +149,7 @@ export default function ChatList() {
               </div>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Frame className="mr-2 h-4 w-4" />
+              <Hash className="mr-2 h-4 w-4" />
               <span className="text-primary-foreground">Create Thread</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -161,7 +161,7 @@ export default function ChatList() {
           </DropdownMenuContent>
         </DropdownMenu>
         <Input
-          className="bg-transparent border-none text-base"
+          className="bg-transparent text-base"
           ref={inputRef}
           onKeyUp={handleChange}
           placeholder={`Message #${nameChannel}`}
@@ -169,6 +169,7 @@ export default function ChatList() {
         <div className="flex gap-2">
           <Gift />
           <Sticker />
+          <Smile />
         </div>
       </div>
     </>
