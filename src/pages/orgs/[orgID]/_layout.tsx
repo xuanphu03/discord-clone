@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { useParams } from '@/router';
-import { Calendar, ChevronDown, Grip, Headphones, Home, Mic, Plus, Settings, Users } from 'lucide-react';
+import { Calendar, ChevronDown, Grip, Headphones, Home, Mic, Plus, Settings, UserRoundPlus, Users } from 'lucide-react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { ORGS } from '@/apis/ORGS';
 import { CATEGORIES } from '@/apis/CATEGRORIES';
@@ -72,12 +72,15 @@ export default function Org() {
                       key={channel.id}
                       className={cn(
                         { 'bg-active text-foreground': channel.id === channelID },
-                        'flex px-4 py-2 cursor-pointer hover:bg-hover rounded-sm'
+                        'flex justify-between px-4 py-2 cursor-pointer group hover:bg-hover rounded-sm'
                       )}
                       onClick={() => navigateToChannel(channel.id)}
                     >
-                      <channel.icon className="w-4" />
-                      <p className="px-2 font-medium">{channel.name}</p>
+                      <div className="flex">
+                        <channel.icon className="w-4" />
+                        <p className="px-2 font-medium">{channel.name}</p>
+                      </div>
+                      <UserRoundPlus className={cn({ 'hidden': channel.id !== channelID }, 'group-hover:block')} />
                     </div>
                   ))}
                 </div>
