@@ -24,11 +24,11 @@ const HEADER = [
 ];
 
 export default function Org() {
-  const { channelID, orgID } = useParams('/orgs/:orgID/channels/:channelID');
+  const { channelID, orgID } = useParams('/orgs/:orgID/:channelID');
   const navigate = useNavigate();
 
   const navigateToChannel = (id: string) => {
-    navigate(`/orgs/${orgID}/channels/${id}`);
+    navigate(`/orgs/${orgID}/${id}`);
     
   };
 
