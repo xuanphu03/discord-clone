@@ -7,13 +7,15 @@ const CATEGORIES = [
     members: [
       {
         id: 1,
-        name: 'Shin',
+        displayName: 'Shin',
+        userName: 'shinosuke123',
         avatar: 'https://th.bing.com/th/id/OIP.GS0ptM4PYsIKvcRmTCoOTgHaEF?w=309&h=180&c=7&r=0&o=5&pid=1.7',
         color: '#2fffff',
       },
       {
         id: 2,
-        name: 'XunaFu',
+        displayName: 'XunaFu',
+        userName: 'kuma.xp03',
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
         color: '#2faf9f',
       },
@@ -25,19 +27,22 @@ const CATEGORIES = [
     members: [
       {
         id: 1,
-        name: 'Shin',
+        displayName: 'Shin',
+        userName: 'shinosuke123',
         avatar: 'https://th.bing.com/th/id/OIP.GS0ptM4PYsIKvcRmTCoOTgHaEF?w=309&h=180&c=7&r=0&o=5&pid=1.7',
         color: '#56d6fd',
       },
       {
         id: 2,
-        name: 'XunaFu',
+        displayName: 'XunaFu',
+        userName: 'kuma.xp03',
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
         color: '#56d6fd',
       },
       {
         id: 2,
-        name: 'ShibaInu',
+        displayName: 'ShibaInu',
+        userName: 'akaimaru',
         avatar:
           'https://th.bing.com/th?q=HSL-35&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-WW&cc=VN&setlang=vi&adlt=strict&t=1&mw=247',
         color: 'red',

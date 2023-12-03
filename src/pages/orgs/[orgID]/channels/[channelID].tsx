@@ -8,15 +8,13 @@ import { useParams } from '@/router';
 import { Bell, BellOff, Hash, HelpCircle, Inbox, Pin, Search, UsersRound } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import userRequest from '@/assets/svgs/userRequest.svg'
-import cleanInbox from '@/assets/svgs/cleanInbox.svg'
+import userRequest from '@/assets/svgs/userRequest.svg';
+import cleanInbox from '@/assets/svgs/cleanInbox.svg';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export default function Channels() {
   const [mute, isMute] = useState(false);
   const [openMemberList, isOpenMemberList] = useState(true);
-  const [openInbox, isOpenInbox] = useState(false);
-  const [openPin, isOpenPin] = useState(false);
   const { channelID } = useParams('/orgs/:orgID/channels/:channelID');
   const channelIndex = Number(channelID) - 1;
   const nameChannel = CATEGORIES[0].channels[channelIndex]?.name;
@@ -29,14 +27,13 @@ export default function Channels() {
           {nameChannel}
         </div>
         <div className="flex gap-3 items-center">
-          <div className="text-foreground/60 hover:text-foreground/80" onClick={() => isMute((e) => !e)}>{ mute ? <BellOff /> : <Bell /> }</div>
-          
+          <div className="text-foreground/60 hover:text-foreground/80" onClick={() => isMute((e) => !e)}>
+            {mute ? <BellOff /> : <Bell />}
+          </div>
+
           <Popover>
-            <PopoverTrigger asChild>
-              <Pin
-                className= "text-foreground/60 hover:text-foreground/80 cursor-pointer rotate-45"
-                onClick={() => isOpenPin(!openPin)}
-              />
+            <PopoverTrigger className="[&_svg]:data-[state=open]:text-foreground text-foreground/60 hover:text-foreground/80 cursor-pointer">
+              <Pin className="rotate-45" />
             </PopoverTrigger>
             <PopoverContent sideOffset={10} className="w-fit p-0">
               <div className="flex justify-between p-4">
@@ -67,14 +64,8 @@ export default function Channels() {
           </div>
 
           <Popover>
-            <PopoverTrigger asChild>
-              <Inbox
-                className={cn(
-                  { 'text-foreground': openInbox, 'text-foreground/60': !openInbox },
-                  'hover:text-foreground/80 cursor-pointer'
-                )}
-                onClick={() => isOpenInbox(!openInbox)}
-              />
+            <PopoverTrigger className="[&_svg]:data-[state=open]:text-foreground text-foreground/60 hover:text-foreground/80 cursor-pointer">
+              <Inbox />
             </PopoverTrigger>
             <PopoverContent sideOffset={20} className="w-fit mr-10 p-0">
               <div className="flex justify-between p-4">
