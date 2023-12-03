@@ -1,9 +1,10 @@
 import { cn } from '@/lib/utils';
 import { useParams } from '@/router';
-import { Calendar, ChevronDown, Grip, Headphones, Home, Mic, Plus, Settings, UserRoundPlus, Users } from 'lucide-react';
+import { Calendar, ChevronDown, Grip, Headphones, Home, Mic, Plus, UserRoundPlus, Users } from 'lucide-react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { ORGS } from '@/apis/ORGS';
 import { CATEGORIES } from '@/apis/CATEGRORIES';
+import SettingModal from './_components/SettingModal';
 
 const HEADER = [
   {
@@ -104,7 +105,7 @@ export default function Org() {
           <div className="flex gap-2">
             <Mic className="w-5" />
             <Headphones className="w-5" />
-            <Settings className="w-5" />
+            <SettingModal />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { ORGS } from '@/apis/ORGS';
 import Avatar from '@/components/ui/avatar';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialogCustom';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function PopoverMember({ member }: Props) {
-  const { orgID } = useParams('/orgs/:orgID/channels/:channelID');
+  const { orgID } = useParams('/orgs/:orgID/:channelID');
   const orgIndex = Number(orgID) - 1;
 
   return (
@@ -46,7 +46,7 @@ export default function PopoverMember({ member }: Props) {
               </div>
               <div className="bg-primary p-4 pt-28 sm:rounded-lg">
                 <div className="bg-black/70 p-2 rounded-md min-h-[257px]">
-                  <div>
+                  <div className="p-4">
                     <p className="text-sm font-bold">{member.displayName}</p>
                     <p className="text-xs text-primary-foreground">{member.userName}</p>
                   </div>
