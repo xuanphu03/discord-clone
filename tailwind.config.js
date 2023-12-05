@@ -37,6 +37,7 @@ module.exports = {
         },
         hover: 'hsl(var(--hover))',
         active: 'hsl(var(--active))',
+        mute: 'hsl(var(--mute))',
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -108,7 +108,7 @@ export default function ChatList() {
     }
   };
 
-  const { channelID } = useParams('/orgs/:orgID/channels/:channelID');
+  const { channelID } = useParams('/orgs/:orgID/:channelID');
   const channelIndex = Number(channelID) - 1;
   const nameChannel = CATEGORIES[0].channels[channelIndex]?.name;
 

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function OrgSidebar({ orgs }: OrgSidebarProps) {
   const navigate = useNavigate();
-  const { orgID } = useParams('/orgs/:orgID/channels/:channelID');
+  const { orgID } = useParams('/orgs/:orgID/:channelID');
 
   return (
     <div className="py-6 pr-4 space-y-4 bg-secondary">

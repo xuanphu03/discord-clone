@@ -5,6 +5,9 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { ORGS } from '@/apis/ORGS';
 import { CATEGORIES } from '@/apis/CATEGRORIES';
 import SettingModal from './_components/SettingModal';
+import { useState } from 'react';
+import deafen from '@/assets/svgs/deafen.svg';
+import mute from '@/assets/svgs/mute.svg';
 
 const HEADER = [
   {
@@ -27,16 +30,38 @@ const HEADER = [
 export default function Org() {
   const { channelID, orgID } = useParams('/orgs/:orgID/:channelID');
   const navigate = useNavigate();
+  const [unMute, setUnMute] = useState(true);
+  const [unDeafen, setUnDeafen] = useState(true);
+  const [voice, setVoice] = useState(true);
 
   const navigateToChannel = (id: string) => {
     navigate(`/orgs/${orgID}/${id}`);
-    
   };
 
-  const org = ORGS.find(org => org.id === orgID);
+  const handleMute = () => {
+    setVoice((voice) => !voice);
+    if (!unDeafen) {
+      setUnMute((mute) => !mute);
+      setUnDeafen((deafen) => !deafen);
+      setVoice((voice) => !voice);
+    } else {
+      setUnMute((mute) => !mute);
+    }
+  };
 
+  const handleDeafen = () => {
+    if (!voice) {
+      setUnDeafen((deafen) => !deafen);
+    } else {
+      setUnMute((mute) => !mute);
+      setUnDeafen((deafen) => !deafen);
+    }
+  };
+  
+  const org = ORGS.find((org) => org.id === orgID);
+  
   return (
-    <div className="w-full flex">
+    <div className="flex">
       <div className="relative bg-primary w-64 flex-shrink-0">
         <header className="shadow-lg p-3 flex items-center justify-between">
           <div className="flex items-center text-lg">
@@ -81,7 +106,7 @@ export default function Org() {
                         <channel.icon className="w-4" />
                         <p className="px-2 font-medium">{channel.name}</p>
                       </div>
-                      <UserRoundPlus className={cn({ 'hidden': channel.id !== channelID }, 'group-hover:block')} />
+                      <UserRoundPlus className={cn({ hidden: channel.id !== channelID }, 'group-hover:block')} />
                     </div>
                   ))}
                 </div>
@@ -103,13 +128,16 @@ export default function Org() {
             </div>
           </div>
           <div className="flex gap-2">
-            <Mic className="w-5" />
-            <Headphones className="w-5" />
+            <div onClick={handleMute}>{unMute ? <Mic className="w-5" /> : <img src={mute} />}</div>
+
+            <div onClick={handleDeafen}>
+              {unDeafen ? <Headphones className="w-5" /> : <img src={deafen} alt="Deafen" />}
+            </div>
             <SettingModal />
           </div>
         </div>
       </div>
-      <div className="w-full">
+      <div className="w-[calc(100vw-5.5rem-16rem)]">
         <Outlet />
       </div>
     </div>

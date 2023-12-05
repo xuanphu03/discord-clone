@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialogCust
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
-import { User } from '@/types/user';
+import { User } from '@/lib/type';
 import mutualFriends from '@/assets/svgs/mutualFriends.svg';
 import iconDiscord from '@/assets/svgs/iconDiscord.svg';
 import { Dot } from 'lucide-react';

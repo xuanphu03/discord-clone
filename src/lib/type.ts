@@ -7,3 +7,11 @@ export interface Org {
 export interface OrgSidebarProps {
   orgs: Org[];
 }
+
+export interface User {
+  id: number;
+  displayName: string;
+  userName: string;
+  avatar: string;
+  color: string;
+}

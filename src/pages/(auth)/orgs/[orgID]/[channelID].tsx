@@ -13,21 +13,21 @@ import cleanInbox from '@/assets/svgs/cleanInbox.svg';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export default function Channels() {
-  const [mute, isMute] = useState(false);
+  const [mute, setMute] = useState(false);
   const [openMemberList, isOpenMemberList] = useState(true);
   const { channelID } = useParams('/orgs/:orgID/:channelID');
   const channelIndex = Number(channelID) - 1;
   const nameChannel = CATEGORIES[0].channels[channelIndex]?.name;
 
   return (
-    <div>
+    <>
       <header className="flex justify-between shadow-lg p-3 text-lg font-bold">
         <div className="flex items-center gap-2">
           <Hash className="w-4" />
           {nameChannel}
         </div>
         <div className="flex gap-3 items-center">
-          <div className="text-foreground/60 hover:text-foreground/80" onClick={() => isMute((e) => !e)}>
+          <div className="text-foreground/60 hover:text-foreground/80" onClick={() => setMute((e) => !e)}>
             {mute ? <BellOff /> : <Bell />}
           </div>
 
@@ -111,6 +111,6 @@ export default function Channels() {
           <MemberList />
         </div>
       </div>
-    </div>
+    </>
   );
 }

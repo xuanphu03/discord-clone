@@ -1,9 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
-@layer base { 
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 8% 3%;
@@ -11,6 +10,7 @@
     --card-foreground: 210 11% 93%;
     --popover: 210 11% 93%;
     --popover-foreground: 0 0% 98%;
+    --main: 235 83% 59%;
     --primary: 220 13% 95%;
     --primary-foreground: 214 10% 50%;
     --secondary: 216 10% 90%;
@@ -22,6 +22,7 @@
     --radius: 0.75rem;
     --active: 216 7% 85%;
     --hover: 210 10% 89%;
+    --mute: 0 80.71% 61.37%;
   }
 
   .dark {
@@ -52,16 +53,16 @@
   }
 
   *::-webkit-scrollbar {
-  width: 4px;
-}
-*::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 5px;
-}
+    width: 4px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5px;
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--secondary-foreground));
-  border-radius: 14px;
-  border: 3px solid transparent;
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--secondary-foreground));
+    border-radius: 14px;
+    border: 3px solid transparent;
+  }
 }
