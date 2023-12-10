@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 8% 3%;
+    --card: 0 0% 98%;
+    --card-foreground: 210 11% 93%;
+    --popover: 210 11% 93%;
+    --popover-foreground: 0 0% 98%;
+    --main: 235 83% 59%;
+    --primary: 220 13% 95%;
+    --primary-foreground: 214 10% 50%;
+    --secondary: 216 10% 90%;
+    --secondary-foreground: 0 0% 100%;
+    --third: 210 11% 93%;
+    --border: 223 7% 82%;
+    --input: 210 11% 93%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.75rem;
+    --active: 216 7% 85%;
+    --hover: 210 10% 89%;
+    --mute: 0 80.71% 61.37%;
+  }
+
+  .dark {
+    --background: 223 7% 21%;
+    --foreground: 0 0% 100%;
+    --card: 220 8% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 228 7% 15%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 220 7% 18%;
+    --primary-foreground: 213 4% 57%;
+    --secondary: 216 7% 14%;
+    --secondary-foreground: 220 8% 23%;
+    --third: 220 7% 17%;
+    --border: 228 7% 15%;
+    --input: 225 7% 24%;
+    --ring: 240 4.9% 83.9%;
+    --active: 227 7% 27%;
+    --hover: 223 6% 22%;
+  }
+}
+
+@font-face {
+  font-family: 'GintoRegular';
+  src: url('./assets/fonts/ABCGintoNord-Regular.otf')
+}
+
+@font-face {
+  font-family: 'GintoBlack';
+  src: url('./assets/fonts/ABCGintoNord-Black.otf')
+}
+
+@font-face {
+  font-family: 'GintoBold';
+  src: url('./assets/fonts/ABCGintoNord-Bold.otf')
+}
+
+@font-face {
+  font-family: 'GintoMedium';
+  src: url('./assets/fonts/ABCGintoNord-Medium.otf')
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--secondary-foreground));
+    border-radius: 14px;
+    border: 3px solid transparent;
+  }
+}
