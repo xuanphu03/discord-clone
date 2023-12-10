@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "sourceMap": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "moduleResolution": "node",
+    "outDir": "./public",
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+}
