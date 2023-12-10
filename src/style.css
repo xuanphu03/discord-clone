@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;700;900&display=swap');
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -45,6 +43,27 @@
     --hover: 223 6% 22%;
   }
 }
+
+@font-face {
+  font-family: 'GintoRegular';
+  src: url('./assets/fonts/ABCGintoNord-Regular.otf')
+}
+
+@font-face {
+  font-family: 'GintoBlack';
+  src: url('./assets/fonts/ABCGintoNord-Black.otf')
+}
+
+@font-face {
+  font-family: 'GintoBold';
+  src: url('./assets/fonts/ABCGintoNord-Bold.otf')
+}
+
+@font-face {
+  font-family: 'GintoMedium';
+  src: url('./assets/fonts/ABCGintoNord-Medium.otf')
+}
+
 @layer base {
   * {
     @apply border-border;

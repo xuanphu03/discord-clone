@@ -41,7 +41,10 @@ module.exports = {
         mute: 'hsl(var(--mute))',
       },
       fontFamily: {
-        primary: ['Noto Sans', 'sans-serif'],
+        ginto: ['GintoRegular', 'sans-serif'],
+        gintoBlack: ['GintoBlack', 'sans-serif'],
+        gintoBold: ['GintoBold', 'sans-serif'],
+        gintoMedium: ['GintoMedium', 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',
