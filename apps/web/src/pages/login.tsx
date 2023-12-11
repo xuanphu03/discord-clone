@@ -1,4 +1,3 @@
-// import bgAuth from '@/assets/images/bg-auth.png';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { getToken, setToken } from '@/lib/storage';
@@ -11,7 +10,7 @@ import { useState } from 'react';
 import { signIn } from '@/apis/auth';
 import { Link } from '@/router';
 import { ChevronLeft } from 'lucide-react';
-import bgLogin from '@/assets/svgs/bgLogin.svg'
+import bgLogin from '@/assets/svgs/bgAuth.svg';
 
 
 export function Loader() {
