@@ -12,9 +12,9 @@ app.use('*', logger());
 app.use(
   '*',
   cors({
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173', 'https://discord-web-clone.vercel.app'],
     credentials: true,
-    allowHeaders: ['Content-Type', 'Authorization']
+    allowHeaders: ['Content-Type', 'Authorization'],
   })
 );
 app.route('/', auth);
