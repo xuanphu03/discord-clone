@@ -1,0 +1,40 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table orgs {
+  id String [pk]
+  icon String [not null]
+  name String [not null]
+  userId String [not null]
+  users users_on_orgs [not null]
+}
+
+Table users {
+  id String [pk]
+  email String [unique, not null]
+  password String [not null]
+  salt String [not null]
+  orgs users_on_orgs [not null]
+}
+
+Table channels {
+  id String [pk]
+  name String [not null]
+  orgId String [not null]
+}
+
+Table users_on_orgs {
+  user users [not null]
+  userId String [not null]
+  org orgs [not null]
+  orgId String [not null]
+
+  indexes {
+    (orgId, userId) [pk]
+  }
+}
+
+Ref: users_on_orgs.userId > users.id
+
+Ref: users_on_orgs.orgId > orgs.id

@@ -1,19 +1,51 @@
 import { db } from '@/lib/db';
+import { paginationSchema } from '@/utils/schema';
+import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 
 export const router = new Hono();
 
 router
-  .get('/', async (c) => {
-    const orgs = await db.org.findMany({});
-    return c.json(orgs);
+  .get('/', zValidator('query', paginationSchema), async (c) => {
+    const user = c.get('user');
+    const name = c.req.query('name');
+    const page = +c.req.query('page') || 1;
+    const limit = +c.req.query('limit') || 10;
+
+    const orgs = await db.org.findMany({
+      skip: (page - 1) * limit,
+      take: limit,
+      where: {
+        userId: user?.id,
+        name: {
+          contains: name,
+        },
+      },
+    });
+    const total = await db.org.count({
+      where: {
+        userId: user?.id,
+        name: {
+          contains: name,
+        },
+      },
+    });
+
+    return c.json({
+      data: orgs,
+      total: total,
+      totalPage: Math.ceil(total / limit),
+    });
   })
   .post('/', async (c) => {
+    const user = c.get('user');
+
     const { name, icon } = await c.req.json<{ name: string; icon: string }>();
     const orgs = await db.org.create({
       data: {
         name: name,
         icon: icon,
+        userId: user?.id,
       },
     });
     return c.json(orgs);
@@ -54,7 +86,17 @@ router
       },
     ])
   )
-  .get('/:orgId/members', (c) =>
+  .get('/:orgId/members', async (c) => {
+    const orgId = c.req.param('orgId');
+
+    const members = await db.usersOnOrgs.findMany({
+      where: {
+        orgId: orgId,
+      },
+    });
+
+    console.log(members);
+
     c.json([
       {
         id: '001',
@@ -66,8 +108,32 @@ router
         joinMethod: 'Discord',
         roles: ['Admin'],
       },
-    ])
-  )
+    ]);
+  })
+  .post('/:orgId/members', async (c) => {
+    const orgId = c.req.param('orgId');
+
+    const members = await db.usersOnOrgs.findMany({
+      where: {
+        orgId: orgId,
+      },
+    });
+
+    console.log(members);
+
+    c.json([
+      {
+        id: '001',
+        displayName: 'John Doe',
+        username: 'john_doe',
+        avatar: 'https://sukienvietsky.com/upload/news/son-tung-mtp-7359.jpeg',
+        memberSince: '2022-01-01',
+        joinedDiscord: '2022-01-01',
+        joinMethod: 'Discord',
+        roles: ['Admin'],
+      },
+    ]);
+  })
   .get('/:orgId/channels/:channelId/messages', (c) =>
     c.json([
       {
@@ -86,10 +152,10 @@ router
     c.json([
       {
         id: 1,
-        name: 'John Doe',
-        avatar: 'https://st.quantrimang.com/photos/image/2019/03/14/HinhnenGoku-18.jpg',
-        roles: ['Admin'],
-        backgroundColor: '#4000ff',
+        name: 'John',
+        avatar: 'https://sukienvietsky.com/upload/news/son-tung-mtp-7359.jpeg',
+        roles: ['Admin', 'F0'],
+        backgroundColor: '#d40000',
         category: {
           id: 1,
           name: 'Đà Nẵng',
@@ -97,10 +163,10 @@ router
       },
       {
         id: 2,
-        name: 'Phước Thạnh',
-        avatar: 'https://st.quantrimang.com/photos/image/2019/03/14/HinhnenGoku-18.jpg',
-        roles: ['Member', 'Moderator'],
-        backgroundColor: '#ff0000',
+        name: 'Tin Nguyen',
+        avatar: 'https://sukienvietsky.com/upload/news/son-tung-mtp-7359.jpeg',
+        roles: ['Học viên'],
+        backgroundColor: '#d40000',
         category: {
           id: 2,
           name: 'Online',
@@ -108,13 +174,13 @@ router
       },
       {
         id: 3,
-        name: 'Tom',
-        avatar: 'https://st.quantrimang.com/photos/image/2019/03/14/HinhnenGoku-18.jpg',
-        roles: ['Member'],
-        backgroundColor: '#00ff5e',
+        name: 'Son Tran',
+        avatar: 'https://sukienvietsky.com/upload/news/son-tung-mtp-7359.jpeg',
+        roles: ['Học viên'],
+        backgroundColor: '#d40000',
         category: {
-          id: 3,
-          name: 'Offline',
+          id: 2,
+          name: 'Online',
         },
       },
     ])
