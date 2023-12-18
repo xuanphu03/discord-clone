@@ -2,9 +2,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "vercel",
-    "start": "vercel dev",
-    "build": "tsc && tsc-alias",
-    "dev": "tsx watch src/index.ts"
+    "start": "vercel dev"
   },
   "dependencies": {
     "debug": "4.1.1",
