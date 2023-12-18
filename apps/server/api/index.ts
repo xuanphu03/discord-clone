@@ -1,14 +1,7 @@
-import { Hono } from 'hono'
-import { handle } from 'hono/vercel'
+import { serve } from '@hono/node-server';
+import { Hono } from 'hono';
 
-export const config = {
-  runtime: 'edge',
-}
+const app = new Hono();
+app.get('/', (c) => c.text('Hello Node.js!'));
 
-const app = new Hono().basePath('/api');
-
-app.post('/', (c) => c.json({ message: 'HELLO WORLD!!!' }));
-app.post('/sign-in', (c) => c.json({ token: '123321' }));
-app.post('/sign-up', (c) => c.json({ token: '123abc321' }));
-
-export default handle(app)
+serve(app);
