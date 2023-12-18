@@ -1,1 +1,1 @@
-export { default } from '../public/index.js';
+export { default } from '../src/index.ts';
