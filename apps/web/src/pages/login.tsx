@@ -50,6 +50,7 @@ export default function Component() {
       setIsLoading(false);
     }
   };
+  
   return (
     <div className="h-screen relative w-full">
       <img src={bgLogin} className="w-screen h-screen" />
