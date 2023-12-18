@@ -7,7 +7,7 @@ export const config = {
 
 const app = new Hono().basePath('/api');
 
-app.get('/', (c) => c.json({ message: 'Hello world!' }));
-app.get('/sign-in', (c) => c.json({ token: '123321' }));
+app.post('/', (c) => c.json({ message: 'Hello world!' }));
+app.post('/sign-in', (c) => c.json({ token: '123321' }));
 
 export default handle(app);
