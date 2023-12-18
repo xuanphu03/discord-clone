@@ -3,7 +3,7 @@ import { handle } from 'hono/vercel';
 
 export const runtime = 'edge';
 
-const app = new Hono().basePath('/api');
+const app = new Hono();
 
 app.get('/', (c) => c.text("Hello"));
 app.get('/sign-in', (c) =>  c.json({ token: '123312' }));
