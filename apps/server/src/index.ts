@@ -5,6 +5,7 @@ export const runtime = 'edge';
 
 const app = new Hono().basePath('/api');
 
+app.post('/', (c) => c.text("Hello"));
 app.post('/sign-in', (c) =>  c.json({ token: '123312' }));
 
 export default handle(app);
