@@ -38,7 +38,7 @@ export default function Navbar() {
   ];
   
   return (
-    <nav className="absolute z-10 top-4 px-4 left-1/2 translate-x-[-50%] w-full max-w-6xl flex justify-between items-center text-background font-bold text-base">
+    <nav className="absolute z-10 top-4 px-5 left-1/2 translate-x-[-50%] w-full max-w-7xl flex justify-between items-center text-background font-bold text-base">
       <Link to="/">
         <img className="max-w-none" src={logo} alt="Logo discord" />
       </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-10 md:gap-0">
         <Button className="rounded-full text-foreground hover:text-main hover:shadow-lg">
           <Link to="/login">Login</Link>
         </Button>

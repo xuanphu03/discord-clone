@@ -6,6 +6,7 @@ import imgVoiceRoom from '@/assets/svgs/imgVoiceRoom.svg';
 import imgFandom from '@/assets/svgs/imgFandom.svg';
 import stars from '@/assets/svgs/stars.svg';
 import { Download } from 'lucide-react';
+import SectionInView from '@/components/SectionInView';
 
 
 export default function Main() {
@@ -34,7 +35,7 @@ export default function Main() {
         </div>
       </header>
 
-      <div className="py-32">
+      <SectionInView animateClass="animate-fade-up" className="py-32">
         <div className="px-10 max-w-7xl mx-auto flex items-center gap-28">
           <img src={imgGroupChat} alt="Demo group chat" />
           <div>
@@ -45,9 +46,9 @@ export default function Main() {
             </p>
           </div>
         </div>
-      </div>
+      </SectionInView>
 
-      <div className="py-32 bg-primary">
+      <SectionInView animateClass="animate-fade-up" className="py-32 bg-primary">
         <div className="px-10 max-w-7xl mx-auto flex items-center gap-28">
           <div>
             <h2 className="text-5xl font-bold leading-snug">Where hanging out is easy</h2>
@@ -58,9 +59,9 @@ export default function Main() {
           </div>
           <img src={imgVoiceChat} alt="Demo group chat" />
         </div>
-      </div>
+      </SectionInView>
 
-      <div className="py-32">
+      <SectionInView animateClass="animate-fade-up" className="py-32">
         <div className="px-10 max-w-7xl mx-auto flex items-center gap-28">
           <img src={imgFandom} alt="Demo group chat" />
           <div>
@@ -71,9 +72,9 @@ export default function Main() {
             </p>
           </div>
         </div>
-      </div>
+      </SectionInView>
 
-      <div className="py-32 bg-primary flex flex-col items-center">
+      <SectionInView animateClass="animate-fade-up" className="py-32 bg-primary flex flex-col items-center">
         <div className="px-10 max-w-7xl mx-auto text-center">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl font-gintoBlack uppercase">Reliable tech for staying close</h2>
@@ -96,7 +97,7 @@ export default function Main() {
             <span>Download for windown</span>
           </Button>
         </div>
-      </div>
+      </SectionInView>
     </>
   );
 }
