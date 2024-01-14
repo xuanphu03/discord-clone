@@ -12,9 +12,9 @@ export default function footer() {
       <div className="mx-auto max-w-7xl ">
         <div className="flex justify-between">
           <div>
-            <Select>
+            <Select defaultValue={'english'}>
               <SelectTrigger className="bg-transparent border-none p-0">
-                <SelectValue placeholder={'Change language'} />
+                <SelectValue />
               </SelectTrigger>
               <SelectContent className="text-foreground">
                 <SelectItem value="english">
@@ -144,10 +144,12 @@ export default function footer() {
             </div>
           </div>
         </div>
-        <hr className="bg-main h-1" />
+        <hr className="bg-main h-1 my-10" />
         <div className="flex justify-between">
           <img src={logo} alt="logo Discord" />
-          <Button className="bg-main rounded">Open Discoed</Button>
+          <Button className="bg-main rounded-full text-foreground hover:bg-main/70 hover:shadow-lg">
+            login
+          </Button>
         </div>
       </div>
     </footer>

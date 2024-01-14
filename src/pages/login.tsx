@@ -12,7 +12,6 @@ import { Link } from '@/router';
 import { ChevronLeft } from 'lucide-react';
 import bgLogin from '@/assets/svgs/bgAuth.svg';
 
-
 export function Loader() {
   const isAuth = getToken();
   if (isAuth) {
@@ -42,6 +41,7 @@ export default function Component() {
     try {
       setIsLoading(true);
       const res = await signIn(email, password);
+      console.log(res.data.accessToken);
       setToken(res.data.accessToken);
       navigate('/orgs');
     } catch (error) {
@@ -50,7 +50,7 @@ export default function Component() {
       setIsLoading(false);
     }
   };
-  
+
   return (
     <div className="h-screen relative w-full">
       <img src={bgLogin} className="w-screen h-screen" />
@@ -58,11 +58,11 @@ export default function Component() {
         <div className="w-full p-8 flex gap-20 bg-gray-800 rounded-sm text-white">
           <div className="w-full">
             <Link to="/" className="inline-flex mb-4">
-              <ChevronLeft /> Go back
+              <ChevronLeft /> <span>Go back</span>
             </Link>
             <h1 className="font-bold text-2xl text-center">Welcome back!</h1>
             <p className="mb-4 text-center"> We're excited to see you again !</p>
-          
+
             <form className="text-start mt-5" onSubmit={handleSubmit(onSubmit)}>
               <Input placeholder="Email Or Phone Number" className="bg-gray-200 text-black" {...register('email')} />
               {errors.email && <p className="mt-1 text-red-500">{errors.email.message}</p>}
