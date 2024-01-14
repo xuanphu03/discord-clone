@@ -1,5 +1,5 @@
 
-export default function discover() {
+export default function Discover() {
   return (
     <div>discover</div>
   )

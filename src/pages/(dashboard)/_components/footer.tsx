@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import logo from '@/assets/svgs/logo.svg';
 import { Button } from '@/components/ui/button';
 
-export default function footer() {
+export default function Footer() {
   return (
     <footer className="dark p-24 bg-primary text-foreground">
       <div className="mx-auto max-w-7xl ">

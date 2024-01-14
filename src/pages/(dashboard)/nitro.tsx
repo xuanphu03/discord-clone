@@ -1,5 +1,5 @@
 
-export default function notro() {
+export default function Nitro() {
   return (
     <div>notro</div>
   )

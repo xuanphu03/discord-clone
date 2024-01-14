@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 
-export default function navbar() {
+export default function Navbar() {
   const NAVLIST = [
     {
       id: '/download',

@@ -1,5 +1,5 @@
 
-export default function careers() {
+export default function Careers() {
   return (
     <div>careers</div>
   )

@@ -1,6 +1,10 @@
 
-export default function download() {
+export default function Download() {
   return (
-    <div>download</div>
+    <div>
+      <div>
+        
+      </div>
+    </div>
   )
 }
