@@ -9,7 +9,7 @@ import SectionInView from '@/components/SectionInView';
 
 export default function DownloadPage() {
   return (
-    <div>
+    <>
       <header className="px-5 flex pt-60 pb-32 dark bg-primary text-foreground">
         <div className="flex mx-auto max-w-7xl justify-between">
           <div className="w-1/2 space-y-10">
@@ -79,6 +79,6 @@ export default function DownloadPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
