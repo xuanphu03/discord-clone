@@ -28,14 +28,14 @@ const HEADER = [
 ];
 
 export default function Org() {
-  const { channelID, orgID } = useParams('/orgs/:orgID/:channelID');
+  const { channelID, orgID } = useParams('/channels/:orgID/:channelID');
   const navigate = useNavigate();
   const [unMute, setUnMute] = useState(true);
   const [unDeafen, setUnDeafen] = useState(true);
   const [voice, setVoice] = useState(true);
 
   const navigateToChannel = (id: string) => {
-    navigate(`/orgs/${orgID}/${id}`);
+    navigate(`/channels/${orgID}/${id}`);
   };
 
   const handleMute = () => {
@@ -57,9 +57,9 @@ export default function Org() {
       setUnDeafen((deafen) => !deafen);
     }
   };
-  
+
   const org = ORGS.find((org) => org.id === orgID);
-  
+
   return (
     <div className="flex">
       <div className="relative bg-primary w-64 flex-shrink-0">

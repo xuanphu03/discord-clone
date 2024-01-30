@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function OrgSidebar({ orgs }: OrgSidebarProps) {
   const navigate = useNavigate();
-  const { orgID } = useParams('/orgs/:orgID/:channelID');
+  const { orgID } = useParams('/channels/:orgID/:channelID');
 
   return (
     <div className="py-6 pr-4 space-y-4 bg-secondary">
@@ -19,7 +19,7 @@ export default function OrgSidebar({ orgs }: OrgSidebarProps) {
             )}
           />
           <img
-            onClick={() => navigate(`/orgs/${org.id}`)}
+            onClick={() => navigate(`/channels/${org.id}/1`)}
             src={org.icon}
             key={org.id}
             alt={org.name}

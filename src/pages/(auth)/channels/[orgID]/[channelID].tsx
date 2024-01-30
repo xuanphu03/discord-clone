@@ -2,8 +2,8 @@ import { CATEGORIES } from '@/apis/CATEGRORIES';
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
-import ChatList from '@/pages/(auth)/orgs/[orgID]/_components/ChatList';
-import MemberList from '@/pages/(auth)/orgs/[orgID]/_components/MemberList';
+import ChatList from '@/pages/(auth)/channels/[orgID]/_components/ChatList';
+import MemberList from '@/pages/(auth)/channels/[orgID]/_components/MemberList';
 import { useParams } from '@/router';
 import { Bell, BellOff, Hash, HelpCircle, Inbox, Pin, Search, UsersRound } from 'lucide-react';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 export default function Channels() {
   const [mute, setMute] = useState(false);
   const [openMemberList, isOpenMemberList] = useState(true);
-  const { channelID } = useParams('/orgs/:orgID/:channelID');
+  const { channelID } = useParams('/channels/:orgID/:channelID');
   const channelIndex = Number(channelID) - 1;
   const nameChannel = CATEGORIES[0].channels[channelIndex]?.name;
 

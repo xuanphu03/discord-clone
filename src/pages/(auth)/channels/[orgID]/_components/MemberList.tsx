@@ -5,7 +5,7 @@ import { getMembers } from '@/apis/members';
 import { useParams } from '@/router';
 
 export default function MemberList() {
-  const { channelID, orgID } = useParams(`/orgs/:orgID/:channelID`);
+  const { channelID, orgID } = useParams(`/channels/:orgID/:channelID`);
   const { data } = useQuery(['members'], () => getMembers(orgID, channelID));
   console.log(data)
   return (

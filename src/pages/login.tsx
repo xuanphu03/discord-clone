@@ -15,7 +15,7 @@ import bgLogin from '@/assets/svgs/bgAuth.svg';
 export function Loader() {
   const isAuth = getToken();
   if (isAuth) {
-    return redirect('/orgs');
+    return redirect('/channels/1/1');
   }
   return null;
 }
@@ -43,7 +43,7 @@ export default function Component() {
       const res = await signIn(email, password);
       console.log(res.data.accessToken);
       setToken(res.data.accessToken);
-      navigate('/orgs');
+      navigate('/orgs/1');
     } catch (error) {
       console.error(error);
     } finally {

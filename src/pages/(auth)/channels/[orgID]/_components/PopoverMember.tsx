@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function PopoverMember({ member }: Props) {
-  const { orgID } = useParams('/orgs/:orgID/:channelID');
+  const { orgID } = useParams('/channels/:orgID/:channelID');
   const orgIndex = Number(orgID) - 1;
 
   return (
