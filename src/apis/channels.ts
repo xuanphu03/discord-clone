@@ -10,6 +10,7 @@ export const getChannels = async (orgID: string) => {
 }
 
 interface Member {
+  id: string,
   displayName: string;
   username: string;
   avatar: string;
@@ -19,6 +20,6 @@ interface Member {
   roles: string[];
 }
 
-export const getChannelMembers = async (orgID: string, channelID: string) => {
-  return request.get<Member[]>(`/orgs/${orgID}/channels/${channelID}/members`)
+export const getOrgMembers = async (orgID: string) => {
+  return request.get<Member[]>(`/orgs/${orgID}/members`)
 }

@@ -47,6 +47,10 @@ module.exports = {
         gintoBold: ['GintoBold', 'sans-serif'],
         gintoMedium: ['GintoMedium', 'sans-serif'],
       },
+      fontSize: {
+        2.5: '.625rem',
+        2.75: ".6875rem"
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

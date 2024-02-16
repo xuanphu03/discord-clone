@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
-import { useParams } from '@/router';
-import { Calendar, ChevronDown, Grip, Headphones, Home, Mic, Plus, UserRoundPlus, Users } from 'lucide-react';
+import { Link, useParams } from '@/router';
+import { Calendar, ChevronDown, Grip, Headphones, Home, Mic, Plus, UserRoundPlus, UsersRound } from 'lucide-react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { ORGS } from '@/apis/ORGS';
 import { CATEGORIES } from '@/apis/CATEGRORIES';
@@ -8,24 +8,6 @@ import SettingModal from './_components/SettingModal';
 import { useState } from 'react';
 import deafen from '@/assets/svgs/deafen.svg';
 import mute from '@/assets/svgs/mute.svg';
-
-const HEADER = [
-  {
-    id: 1,
-    name: 'Events',
-    icon: Calendar,
-  },
-  {
-    id: 2,
-    name: 'Browse Channels',
-    icon: Grip,
-  },
-  {
-    id: 3,
-    name: 'Members',
-    icon: Users,
-  },
-];
 
 export default function Org() {
   const { channelID, orgID } = useParams('/channels/:orgID/:channelID');
@@ -74,12 +56,24 @@ export default function Org() {
         </header>
         <div className="h-[calc(100%-6.5rem)] overflow-y-auto text-primary-foreground">
           <div className="px-2">
-            {HEADER.map((header) => (
-              <div className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-hover rounded-sm" key={header.id}>
-                <header.icon />
-                <p>{header.name}</p>
-              </div>
-            ))}
+            <div className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-hover rounded-sm">
+              <Calendar />
+              <p>Events</p>
+            </div>
+
+            <div className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-hover rounded-sm">
+              <Grip />
+              <p>Browse Channels</p>
+            </div>
+
+            <Link
+              to="/channels/:orgID/member-safety"
+              params={{ orgID }}
+              className="px-3 py-2 flex gap-2 cursor-pointer hover:bg-hover rounded-sm"
+            >
+              <UsersRound />
+              <p>Members</p>
+            </Link>
           </div>
           <div className="px-2 mt-4">
             <hr className="h-2 border-border" />

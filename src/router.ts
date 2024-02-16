@@ -8,6 +8,7 @@ export type Path =
   | `/blog`
   | `/careers`
   | `/channels/:orgID/:channelID`
+  | `/channels/:orgID/member-safety`
   | `/discover`
   | `/download`
   | `/login`
@@ -18,6 +19,7 @@ export type Path =
 
 export type Params = {
   '/channels/:orgID/:channelID': { orgID: string; channelID: string }
+  '/channels/:orgID/member-safety': { orgID: string }
 }
 
 export type ModalPath = never
