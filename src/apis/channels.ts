@@ -23,3 +23,7 @@ interface Member {
 export const getOrgMembers = async (orgID: string) => {
   return request.get<Member[]>(`/orgs/${orgID}/members`)
 }
+
+export const getChannelMembers = async (orgID: string, channelID: string) => {
+  return request.get(`/orgs/${orgID}/${channelID}/members`);
+};
