@@ -6,3 +6,11 @@ export const signIn = async (email: string, password: string) => {
     password,
   });
 };
+
+export const signUp = async (email: string, password: string, username: string) => {
+  return request.post(`/sign-up`, {
+    email,
+    password,
+    username,
+  });
+};

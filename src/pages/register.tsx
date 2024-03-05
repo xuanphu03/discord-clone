@@ -4,17 +4,17 @@ import { Input } from '@/components/ui/input';
 import { getToken, setToken } from '@/lib/storage';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { LoginSchema } from '@/lib/shema';
+import { SignUpSchema } from '@/lib/shema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useState } from 'react';
-import { signIn } from '@/apis/auth';
+import { signUp } from '@/apis/auth';
 import { Checkbox } from '@/components/ui/checkbox';
 
 export function Loader() {
   const isAuth = getToken();
   if (isAuth) {
-    return redirect('/orgs');
+    return redirect('/channels/1/1');
   }
   return null;
 }
@@ -29,7 +29,7 @@ export default function Component() {
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
-    resolver: zodResolver(LoginSchema),
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -38,12 +38,17 @@ export default function Component() {
     },
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof LoginSchema>> = async ({ email, password }) => {
+  const onSubmit: SubmitHandler<z.infer<typeof SignUpSchema>> = async ({
+    email,
+    password,
+    username,
+  }) => {
     try {
       setIsLoading(true);
-      const res = await signIn(email, password);
+      const res = await signUp(email, password, username);
       setToken(res.data.accessToken);
-      navigate('/orgs');
+      //Sửa lại phần sign up, khi đăng kí thành công thì sẽ navigate về trong login
+      navigate('/login');
     } catch (error) {
       console.error(error);
     } finally {

@@ -15,3 +15,22 @@ export const LoginSchema = z.object({
     })
     .regex(validator.password, 'Password must contain at least 8 characters, 1 letter and 1 number'),
 });
+
+export const SignUpSchema = z.object({
+  email: z
+    .string()
+    .min(1, {
+      message: 'Email is required',
+    })
+    .email('Email must be valid'),
+  password: z
+    .string()
+    .min(1, {
+      message: 'Password is required',
+    })
+    .regex(
+      validator.password,
+      'Password must contain at least 8 characters, 1 letter and 1 number'
+  ),
+  username: z.string()
+});
