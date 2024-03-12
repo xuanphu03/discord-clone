@@ -46,7 +46,6 @@ export default function Component() {
     try {
       setIsLoading(true);
       const res = await signIn(email, password);
-      console.log(res.data.accessToken);
       setToken(res.data.accessToken);
       navigate('/channels/1/1');
     } catch (error) {

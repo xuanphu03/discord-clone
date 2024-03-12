@@ -1,7 +1,14 @@
-import { ORGS } from '@/apis/ORGS';
 import Avatar from '@/components/ui/avatar';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialogCustom';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from '@/components/ui/dialogCustom';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { User } from '@/lib/type';
@@ -22,7 +29,10 @@ export default function PopoverMember({ member }: Props) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="px-2 py-1 flex gap-2 items-center hover:bg-hover rounded-md" key={member.id}>
+        <div
+          className="px-2 py-1 flex gap-2 items-center hover:bg-hover rounded-md"
+          key={member.id}
+        >
           <Avatar src={member.avatar} alt={member.displayName} />
           <p style={{ color: member.backgroundColor }}>{member.displayName}</p>
         </div>
@@ -33,7 +43,11 @@ export default function PopoverMember({ member }: Props) {
         style={{ backgroundColor: member.backgroundColor }}
       >
         <div className="group absolute flex justify-center items-center top-2 left-4 bg-primary rounded-full w-24 h-24">
-          <img className="object-cover w-20 h-20 rounded-full" src={member.avatar} alt={member.displayName} />
+          <img
+            className="object-cover w-20 h-20 rounded-full"
+            src={member.avatar}
+            alt={member.displayName}
+          />
           <Dialog>
             <DialogTrigger
               asChild
@@ -48,26 +62,43 @@ export default function PopoverMember({ member }: Props) {
                   style={{ backgroundColor: member.backgroundColor }}
                 />
                 <div className="absolute flex justify-center items-center top-2 left-4 bg-primary rounded-full w-24 h-24">
-                  <img className="object-cover w-20 h-20 rounded-full" src={member.avatar} alt={member.displayName} />
+                  <img
+                    className="object-cover w-20 h-20 rounded-full"
+                    src={member.avatar}
+                    alt={member.displayName}
+                  />
                 </div>
               </div>
               <div className="bg-primary p-4 pt-28 sm:rounded-lg">
                 <div className="bg-black/70 p-2 rounded-md min-h-[257px]">
                   <div className="p-4">
                     <p className="text-sm font-bold">{member.displayName}</p>
-                    <p className="text-xs text-primary-foreground">{member.userName}</p>
+                    <p className="text-xs text-primary-foreground">
+                      {member.userName}
+                    </p>
                   </div>
                   <Tabs defaultValue="userInfo">
                     <TabsList>
                       <TabsTrigger value="userInfo">User Info</TabsTrigger>
-                      <TabsTrigger value="marualServers">Matual Servers</TabsTrigger>
-                      <TabsTrigger value="marualFriends">Matual Friends</TabsTrigger>
+                      <TabsTrigger value="marualServers">
+                        Matual Servers
+                      </TabsTrigger>
+                      <TabsTrigger value="marualFriends">
+                        Matual Friends
+                      </TabsTrigger>
                     </TabsList>
                     <hr className="-mt-1 mb-4" />
-                    <TabsContent value="userInfo" className="space-y-4 px-4 mt-3">
+                    <TabsContent
+                      value="userInfo"
+                      className="space-y-4 px-4 mt-3"
+                    >
                       <div className="space-y-1">
-                        <p className="uppercase font-bold text-xs">Discord member since</p>
-                        <p className="text-xs text-primary-foreground">Mar 11, 2020</p>
+                        <p className="uppercase font-bold text-xs">
+                          Discord member since
+                        </p>
+                        <p className="text-xs text-primary-foreground">
+                          Mar 11, 2020
+                        </p>
                       </div>
                       <div className="space-y-1">
                         <p className="uppercase font-bold text-xs">Note</p>
@@ -79,25 +110,19 @@ export default function PopoverMember({ member }: Props) {
                     </TabsContent>
                     <TabsContent value="marualServers">
                       <div className="flex h-36 px-2 flex-col overflow-y-auto">
-                        {ORGS.map((org) => (
-                          <div
-                            key={org.id}
-                            className="flex p-2 gap-3 items-center hover:bg-hover rounded-lg cursor-pointer"
-                          >
-                            <img
-                              className="object-cover h-10 w-10 flex items-center rounded-lg"
-                              src={org.icon}
-                              alt={org.name}
-                            />
-                            <p>{org.name}</p>
-                          </div>
-                        ))}
+                       
                       </div>
                     </TabsContent>
                     <TabsContent value="marualFriends" className="m-2">
                       <div className="flex flex-col items-center">
-                        <img width={200} src={mutualFriends} alt="Mutual Friends" />
-                        <p className="uppercase text-xs">No friends in common</p>
+                        <img
+                          width={200}
+                          src={mutualFriends}
+                          alt="Mutual Friends"
+                        />
+                        <p className="uppercase text-xs">
+                          No friends in common
+                        </p>
                       </div>
                     </TabsContent>
                   </Tabs>
@@ -123,7 +148,7 @@ export default function PopoverMember({ member }: Props) {
                   </div>
                   <Dot />
                   <div className="flex gap-1">
-                    <img className="rounded-full w-4 h-4" src={ORGS[orgIndex].icon} alt="icon discord" />
+                    
                     <p className="text-xs">Nov 23, 2023</p>
                   </div>
                 </div>
@@ -144,10 +169,16 @@ export default function PopoverMember({ member }: Props) {
               </div>
               <div className="space-y-1">
                 <p className="uppercase text-xs font-bold">Note</p>
-                <Input className="bg-transparent text-xs h-5 p-0" placeholder="Click to add a note" />
+                <Input
+                  className="bg-transparent text-xs h-5 p-0"
+                  placeholder="Click to add a note"
+                />
               </div>
             </div>
-            <Input className="border bg-transparent rounded-sm" placeholder={`Message @${member.displayName}`} />
+            <Input
+              className="border bg-transparent rounded-sm"
+              placeholder={`Message @${member.displayName}`}
+            />
           </div>
         </div>
       </PopoverContent>

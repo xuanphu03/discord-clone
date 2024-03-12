@@ -1,33 +1,48 @@
-import { CATEGORIES } from '@/apis/CATEGRORIES';
 import { Input } from '@/components/ui/input';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import ChatList from '@/pages/(auth)/channels/[orgID]/_components/ChatList';
 import MemberList from '@/pages/(auth)/channels/[orgID]/_components/MemberList';
-import { useParams } from '@/router';
-import { Bell, BellOff, Hash, HelpCircle, Inbox, Pin, Search, UsersRound } from 'lucide-react';
+import {
+  Bell,
+  BellOff,
+  Hash,
+  HelpCircle,
+  Inbox,
+  Pin,
+  Search,
+  UsersRound,
+} from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import userRequest from '@/assets/svgs/userRequest.svg';
 import cleanInbox from '@/assets/svgs/cleanInbox.svg';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function Channels() {
   const [mute, setMute] = useState(false);
   const [openMemberList, isOpenMemberList] = useState(true);
-  const { channelID } = useParams('/channels/:orgID/:channelID');
-  const channelIndex = Number(channelID) - 1;
-  const nameChannel = CATEGORIES[0].channels[channelIndex]?.name;
 
   return (
     <>
       <header className="flex justify-between shadow-lg p-3 text-lg font-bold">
         <div className="flex items-center gap-2">
           <Hash className="w-4" />
-          {nameChannel}
         </div>
         <div className="flex gap-3 items-center">
-          <div className="text-foreground/60 hover:text-foreground/80" onClick={() => setMute((e) => !e)}>
+          <div
+            className="text-foreground/60 hover:text-foreground/80"
+            onClick={() => setMute((e) => !e)}
+          >
             {mute ? <BellOff /> : <Bell />}
           </div>
 
@@ -52,14 +67,20 @@ export default function Channels() {
 
           <UsersRound
             className={cn(
-              { 'text-foreground': openMemberList, 'text-foreground/60': !openMemberList },
+              {
+                'text-foreground': openMemberList,
+                'text-foreground/60': !openMemberList,
+              },
               'hover:text-foreground/80 cursor-pointer'
             )}
             onClick={() => isOpenMemberList(!openMemberList)}
           />
 
           <div className="flex bg-third items-center">
-            <Input className="bg-transparent h-5 w-32 font-normal focus:w-52" placeholder="Search" />
+            <Input
+              className="bg-transparent h-5 w-32 font-normal focus:w-52"
+              placeholder="Search"
+            />
             <Search className="w-4 text-foreground/60" />
           </div>
 
@@ -107,7 +128,12 @@ export default function Channels() {
         <div className="w-full pb-5 flex flex-col justify-between">
           <ChatList />
         </div>
-        <div className={cn({ hidden: !openMemberList }, 'w-60 p-4 bg-third/70 flex-shrink-0')}>
+        <div
+          className={cn(
+            { hidden: !openMemberList },
+            'w-60 p-4 bg-third/70 flex-shrink-0'
+          )}
+        >
           <MemberList />
         </div>
       </div>

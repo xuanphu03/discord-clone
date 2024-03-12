@@ -1,29 +1,26 @@
-import { request } from "@/lib/request";
+import { request } from '@/lib/request';
+import * as z from 'zod';
 
-interface Channel {
-  id: string;
-  name: string;
+export enum ChannelType {
+  VOICE = 'VOICE',
+  TEXT = 'TEXT',
+  FORUM = 'FORUM',
 }
+
+export const channelSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  isPrivate: z.boolean(),
+  type: z.nativeEnum(ChannelType),
+});
+
+export type Channel = z.infer<typeof channelSchema>;
 
 export const getChannels = async (orgID: string) => {
-  return request.get<Channel[]>(`orgs/${orgID}/channels`)
-}
-
-interface Member {
-  id: string,
-  displayName: string;
-  username: string;
-  avatar: string;
-  memberSince: string;
-  joinedDiscord: string;
-  joinMethod: string;
-  roles: string[];
-}
-
-export const getOrgMembers = async (orgID: string) => {
-  return request.get<Member[]>(`/orgs/${orgID}/members`)
-}
-
-export const getChannelMembers = async (orgID: string, channelID: string) => {
-  return request.get(`/orgs/${orgID}/${channelID}/members`);
+  const res = await request.get(`/orgs/${orgID}/channels`);
+  return channelSchema.array().parse(res.data.data);
 };
+
+// export const getChannelMembers = async (orgID: string, channelID: string) => {
+//   return request.get(`/orgs/${orgID}/channels/${channelID}/members`);
+// };

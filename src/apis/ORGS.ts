@@ -1,27 +1,37 @@
-export const ORGS = [
-  {
-    id: '1',
-    icon: 'https://th.bing.com/th/id/OIP.HI8eMdq6S1MhsUitM3sYgAHaHa?rs=1&pid=ImgDetMain',
-    name: 'Team Flash',
-  },
-  {
-    id: '2',
-    icon: 'https://th.bing.com/th/id/OIP.ViO3n8sbdNWlcQLeMkaVoAAAAA?rs=1&pid=ImgDetMain',
-    name: 'Saigon Phantom',
-  },
-  {
-    id: '3',
-    icon: 'https://cdn.5minvideo.id/images/logo-garena-indonesia.png',
-    name: 'Garena',
-  },
-  {
-    id: '4',
-    icon: 'https://th.bing.com/th/id/OIP.DY0Hp2PoP5Os-BCuLFI71wHaGc?rs=1&pid=ImgDetMain',
-    name: 'Luffy',
-  },
-  {
-    id: '5',
-    icon: 'https://th.bing.com/th/id/OIP.GS0ptM4PYsIKvcRmTCoOTgHaEF?w=309&h=180&c=7&r=0&o=5&pid=1.7',
-    name: 'Cậu bé bút chì Shinosuke',
-  },
-];
+import { request } from '@/lib/request';
+import { z } from 'zod';
+import { categorySchema } from './categories';
+
+const orgSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  icon: z.string().nullable(),
+});
+
+export type Org = z.infer<typeof orgSchema>;
+
+export const getOrgs = async () => {
+  const res = await request.get('/orgs');
+  return orgSchema.array().parse(res.data);
+};
+
+
+// TODO: Add pagination
+
+export const getOrg = async (orgID: string) => {
+  const res = await request.get(`/orgs/${orgID}`);
+  return orgSchema
+    .extend({
+      categories: z.array(categorySchema),
+    })
+    .parse(res.data.data);
+};
+
+interface AddOrgInput {
+  name: string;
+  icon?: string;
+}
+
+export const addOrg = async (addOrgInput: AddOrgInput) => {
+  return request.post(`/orgs`, addOrgInput);
+};

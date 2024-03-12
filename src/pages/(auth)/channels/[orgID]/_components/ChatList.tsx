@@ -1,4 +1,3 @@
-import { CATEGORIES } from '@/apis/CATEGRORIES';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -7,7 +6,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import { useParams } from '@/router';
 import { Gift, Hash, Plus, Slash, Smile, Sticker, Upload } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
@@ -17,7 +15,8 @@ const MESSAGES = [
     id: 1,
     sender: {
       name: 'Inu Shiba',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-5mtjxpAVAe11WGg2JNdR-imdm04QxHo3QA&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-5mtjxpAVAe11WGg2JNdR-imdm04QxHo3QA&usqp=CAU',
       color: 'red-500',
     },
     message: 'Đi đâu đấy?',
@@ -26,7 +25,8 @@ const MESSAGES = [
     id: 2,
     sender: {
       name: 'XunaFu',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
       color: 'green-500',
     },
     message: 'Đánh cầu lông đê!!!',
@@ -35,7 +35,8 @@ const MESSAGES = [
     id: 3,
     sender: {
       name: 'XunaFu',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
       color: 'green-500',
     },
     message: 'Ngủ luôn cũng được :))',
@@ -44,7 +45,8 @@ const MESSAGES = [
     id: 3,
     sender: {
       name: 'XunaFu',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
       color: 'green-500',
     },
     message: 'Ngủ luôn cũng được :))',
@@ -53,7 +55,8 @@ const MESSAGES = [
     id: 3,
     sender: {
       name: 'XunaFu',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
       color: 'green-500',
     },
     message: 'Ngủ luôn cũng được :))',
@@ -62,7 +65,8 @@ const MESSAGES = [
     id: 3,
     sender: {
       name: 'XunaFu',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
       color: 'green-500',
     },
     message: 'Ngủ luôn cũng được :))',
@@ -71,7 +75,8 @@ const MESSAGES = [
     id: 3,
     sender: {
       name: 'XunaFu',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsxcQs95fyxfOtD_tiH5-dedux-NtPJ9HRWg&usqp=CAU',
       color: 'green-500',
     },
     message: 'Ngủ luôn cũng được :))',
@@ -108,20 +113,26 @@ export default function ChatList() {
     }
   };
 
-  const { channelID } = useParams('/channels/:orgID/:channelID');
-  const channelIndex = Number(channelID) - 1;
-  const nameChannel = CATEGORIES[0].channels[channelIndex]?.name;
-
   return (
     <>
       <div className="overflow-y-auto" ref={chatListRef}>
         {message.map((message) => (
-          <div className="flex gap-4 my-3 px-5 py-1 hover:bg-hover" key={message.id}>
+          <div
+            className="flex gap-4 my-3 px-5 py-1 hover:bg-hover"
+            key={message.id}
+          >
             <div>
-              <img className="rounded-full" src={message.sender.avatar} alt={message.sender.name} width={40} />
+              <img
+                className="rounded-full"
+                src={message.sender.avatar}
+                alt={message.sender.name}
+                width={40}
+              />
             </div>
             <div>
-              <p className={`text-${message.sender.color} font-bold`}>{message.sender.name}</p>
+              <p className={`text-${message.sender.color} font-bold`}>
+                {message.sender.name}
+              </p>
               <p>{message.message}</p>
             </div>
           </div>
@@ -164,7 +175,6 @@ export default function ChatList() {
           className="bg-transparent text-base"
           ref={inputRef}
           onKeyUp={handleChange}
-          placeholder={`Message #${nameChannel}`}
         />
         <div className="flex gap-2">
           <Gift />

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from './storage';
+import { getToken, removeToken } from './storage';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
@@ -18,3 +18,15 @@ request.interceptors.request.use((config) => {
   return config;
 });
 
+request.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    if (error.response.status === 401) {
+      removeToken();
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
